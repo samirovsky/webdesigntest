@@ -14,8 +14,24 @@ var corsOptions = {
 }
 
 app.use(express.static("./dist"));
-app.get("/*", cors(corsOptions), function(req, res) {
+
+app.options('/*', cors()) // enable pre-flight request for DELETE request
+
+app.del('/*', cors(), function (req, res, next) {
+  res.sendFile("index.html", {root: "dist/"});
+});
+
+app.patch('/*', cors(), function (req, res, next) {
+  res.sendFile("index.html", {root: "dist/"});
+});
+
+app.post('/*', cors(), function (req, res, next) {
+  res.sendFile("index.html", {root: "dist/"});
+});
+
+app.get("/*", cors(), function(req, res, next) {
     res.sendFile("index.html", {root: "dist/"}
   );
 });
+
 app.listen(process.env.PORT || 8080);
