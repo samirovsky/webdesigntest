@@ -5,3 +5,4 @@
 
 > ### Angular codebase containing real world examples (CRUD, auth, advanced patterns, etc)
 
+Very cool project
